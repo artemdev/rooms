@@ -1,0 +1,36 @@
+
+What is left:
+    Infinite scroll:
+        1. Create an api to fetch more items with pagination
+        
+        return {
+            data: []
+            paginatorInfo: {total: 100, current: 1, hasMorePages: true}
+        }
+
+        2. Create frontend button to trigger enpoint with pagination
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Acceptance creterias:
+
+Efficient media loading: How well are images and videos loaded only when
+necessary (e.g., based on viewport visibility)?
+
+CarouselVideo - uses intersection observer to load content only inside viewport +
+CarouselImage - uses lazy from next +
