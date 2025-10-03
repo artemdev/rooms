@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+
+import { preloadMockWorker, getMockWorkerPromise } from '../lib/mock-preloader';
 import { ContentLoader } from './ContentLoader';
 
 export function StartMockWorker({ children }: { children: React.ReactNode }) {
@@ -8,8 +10,14 @@ export function StartMockWorker({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     async function enableMocks() {
-      const { initMocks } = await import('../mocks/initMock');
-      await initMocks();
+      // Check if mock worker is already being initialized
+      const existingPromise = getMockWorkerPromise();
+
+      if (existingPromise) {
+        await existingPromise;
+      } else {
+        await preloadMockWorker();
+      }
 
       setMockReady(true);
     }

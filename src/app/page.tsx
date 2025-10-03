@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation';
+import { redirect, RedirectType } from 'next/navigation';
 
 export default function HomePage() {
-  redirect('/rooms');
+  redirect('/rooms', RedirectType.push);
 }

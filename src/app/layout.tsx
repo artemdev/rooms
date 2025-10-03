@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastContainer } from 'react-toastify';
 
 import { StartMockWorker } from '../components/StartMockWorker';
+// Import early mock initialization to start preloading immediately
+import '../lib/early-mock-init';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
