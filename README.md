@@ -4,6 +4,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 .env.development
 
 NEXT_PUBLIC_API_MOCKING=enabled
+
 NEXT_PUBLIC_MOCK_DELAY=1500
 
 ### Run the development server:
