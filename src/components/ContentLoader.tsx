@@ -1,5 +1,3 @@
-import { Loader } from './Loader';
-
 export function ContentLoader({
   text,
   className = '',
@@ -12,7 +10,9 @@ export function ContentLoader({
       className={`d-flex justify-content-center align-items-center ${className}`}
     >
       <span className='me-2'>
-        <Loader />
+        <div className='spinner-border text-primary' role='status'>
+          <span className='sr-only'></span>
+        </div>
       </span>
 
       {text}
