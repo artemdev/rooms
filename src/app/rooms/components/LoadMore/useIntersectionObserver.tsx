@@ -22,7 +22,7 @@ export function useIntersectionObserver(
     observer.observe(node);
 
     return () => observer.disconnect();
-  }, [threshold, root, rootMargin, elementRef]);
+  }, [elementRef?.current, JSON.stringify(threshold), root, rootMargin]);
 
   return entry;
 }
