@@ -1,20 +1,25 @@
 
 What is left:
     Infinite scroll:
-        1. Create an api to fetch more items with pagination
+        1. Create an api to fetch more items with pagination +
         
         return {
             data: []
             paginatorInfo: {total: 100, current: 1, hasMorePages: true}
         }
 
-        2. Create frontend button to trigger enpoint with pagination
+        2. Create frontend button to trigger enpoint with pagination +
         
 
+Refactor 
+Move loader to page - define global loader
 
 
-
-
+add types,
+structure files 
+refactor to independent components
+add mock data
+deploy
 
 
 
