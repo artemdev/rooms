@@ -58,7 +58,7 @@ export default function RoomsPage() {
 
           return (
             <Fragment key={room.id}>
-              <Col lg={4} md={6} key={room.id}>
+              <Col xl={4} md={6} key={room.id}>
                 <Room key={room.id} name={room.name} variants={room.variants} />
               </Col>
 
