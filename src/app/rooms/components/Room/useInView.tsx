@@ -23,7 +23,7 @@ export default function useInView({
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [contentRef, threshold]);
 
   return isInView;
 }

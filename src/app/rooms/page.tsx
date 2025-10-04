@@ -13,6 +13,7 @@ export default function RoomsPage() {
   const [data, setData] = useState<IRoom[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [nextPage, setNextPage] = useState<number>(1);
+  const [hasMorePages, setHasMorePages] = useState<boolean>(false);
 
   useEffect(() => {
     fetch('/api/rooms')
@@ -21,8 +22,9 @@ export default function RoomsPage() {
 
         return res.json();
       })
-      .then((data) => {
-        setData(data.data);
+      .then(({ data, hasMorePages }) => {
+        setData(data);
+        setHasMorePages(hasMorePages);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -31,10 +33,18 @@ export default function RoomsPage() {
       });
   }, []);
 
-  const handleDataAndPage = useCallback(({ data }: { data: IRoom[] }) => {
-    setNextPage((prevPage) => prevPage + 1);
-    setData((prevData) => [...prevData, ...data]);
-  }, []);
+  const handleDataAndPage = useCallback(
+    ({ data, hasMorePages }: { data: IRoom[]; hasMorePages: boolean }) => {
+      if (data.length === 0) {
+        return;
+      }
+
+      setNextPage((prevPage) => prevPage + 1);
+      setData((prevData) => [...prevData, ...data]);
+      setHasMorePages(hasMorePages);
+    },
+    [],
+  );
 
   if (isLoading) {
     return <ContentLoader text='Loading rooms...' className='vh-100' />;
@@ -52,7 +62,7 @@ export default function RoomsPage() {
                 <Room key={room.id} name={room.name} variants={room.variants} />
               </Col>
 
-              {isLastRoom && (
+              {isLastRoom && hasMorePages && (
                 <Col className='d-flex  align-items-start ms-2 mt-5'>
                   <LoadMore
                     nextPage={nextPage}

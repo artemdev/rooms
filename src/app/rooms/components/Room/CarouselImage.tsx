@@ -14,7 +14,11 @@ export function CarouselImage({ url }: ICarouselImage) {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div ref={imageRef} style={{ height: CONTENT_HEIGHT }}>
+    <div
+      ref={imageRef}
+      style={{ height: CONTENT_HEIGHT }}
+      className='position-relative'
+    >
       {isLoading && <ContentLoader />}
 
       <Image

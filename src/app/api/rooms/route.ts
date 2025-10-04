@@ -9,7 +9,7 @@ export async function GET(request: Request) {
     return Response.json(rooms[page]);
   }
 
-  return Response.json({ data: [] });
+  return Response.json({ data: [], hasMorePages: false });
 }
 
 function delay(ms: number) {

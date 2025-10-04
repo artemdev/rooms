@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { debounce } from 'lodash';
+import { throttle } from 'lodash';
 import { toast } from 'react-toastify';
 
 import { useLoadMorePagination } from './useLoadMorePagination';
@@ -12,25 +12,33 @@ export function LoadMore({
   handleDataAndPage,
   nextPage,
 }: {
-  handleDataAndPage: ({ data }: { data: IRoom[] }) => void;
+  handleDataAndPage: ({
+    data,
+    hasMorePages,
+  }: {
+    data: IRoom[];
+    hasMorePages: boolean;
+  }) => void;
   nextPage: number;
 }) {
   const [isLoadingMore, setIsLoadingMore] = useState<boolean | null>(false);
 
-  const debouncedFetch = useMemo(
+  const throttledFetch = useMemo(
     () =>
-      debounce(() => {
+      throttle(() => {
         setIsLoadingMore(true);
         fetch(`/api/rooms?page=${nextPage}`)
           .then((res) => res.json())
-          .then((data) => handleDataAndPage(data))
+          .then(({ data, hasMorePages }) =>
+            handleDataAndPage({ data, hasMorePages }),
+          )
           .catch((error) => toast.error(error.message))
           .finally(() => setIsLoadingMore(false));
-      }, 300),
-    [nextPage, handleDataAndPage, setIsLoadingMore], // only recreate when these change
+      }, 500),
+    [nextPage, handleDataAndPage, setIsLoadingMore],
   );
 
-  const loadMoreElRef = useLoadMorePagination(debouncedFetch);
+  const loadMoreElRef = useLoadMorePagination(throttledFetch);
 
   if (isLoadingMore) {
     return <ContentLoader text='Loading more rooms ...' className='gap-2' />;
