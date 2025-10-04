@@ -53,7 +53,7 @@ export default function RoomsPage() {
               </Col>
 
               {isLastRoom && (
-                <Col className='d-flex justify-content-center mt-5'>
+                <Col className='d-flex  align-items-start ms-2 mt-5'>
                   <LoadMore
                     nextPage={nextPage}
                     handleDataAndPage={handleDataAndPage}

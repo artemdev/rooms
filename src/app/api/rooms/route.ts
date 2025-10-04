@@ -1,4 +1,4 @@
-import { rooms } from '../../rooms/data/rooms';
+import { rooms } from './data/rooms';
 
 export async function GET(request: Request) {
   const page = Number(new URL(request.url).searchParams.get('page') || 0);
