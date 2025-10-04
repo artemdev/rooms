@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useState, useCallback } from 'react';
+import { memo } from 'react';
 import Card from 'react-bootstrap/Card';
 import { MediaCarousel } from './MediaCarousel';
 
