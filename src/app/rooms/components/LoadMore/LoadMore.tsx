@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react';
-import { useLoadMorePagination } from './useLoadMorePagination';
 import { debounce } from 'lodash';
 import { toast } from 'react-toastify';
 
-import { IRoom } from '@/types';
+import { useLoadMorePagination } from './useLoadMorePagination';
+
 import { ContentLoader } from '@/components/ContentLoader';
+
+import { IRoom } from '@/types';
 
 export function LoadMore({
   handleDataAndPage,

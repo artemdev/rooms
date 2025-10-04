@@ -1,5 +1,4 @@
 import Carousel from 'react-bootstrap/Carousel';
-
 import { CarouselVideo } from './CarouselVideo';
 import { CarouselImage } from './CarouselImage';
 

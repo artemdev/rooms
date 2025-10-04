@@ -1,9 +1,7 @@
-'use client';
-
 import { memo } from 'react';
+
 import Card from 'react-bootstrap/Card';
 import { MediaCarousel } from './MediaCarousel';
-
 import Accordion from 'react-bootstrap/Accordion';
 
 type Variant = {

@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+
 import useInView from './useInView';
 
 import { ContentLoader } from '@/components/ContentLoader';
