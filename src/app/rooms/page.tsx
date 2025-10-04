@@ -15,7 +15,7 @@ export default function RoomsPage() {
   const [nextPage, setNextPage] = useState<number>(1);
 
   useEffect(() => {
-    fetch('/rooms')
+    fetch('/api/rooms')
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
 

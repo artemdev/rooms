@@ -19,7 +19,7 @@ export function LoadMore({
     () =>
       debounce(() => {
         setIsLoadingMore(true);
-        fetch(`/rooms?page=${nextPage}`)
+        fetch(`/api/rooms?page=${nextPage}`)
           .then((res) => res.json())
           .then((data) => handleDataAndPage(data))
           .catch((error) => toast.error(error.message))
