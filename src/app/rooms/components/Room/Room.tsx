@@ -27,13 +27,13 @@ const Room = memo(({ name, variants }: IRoom) => {
       </Card.Header>
 
       <Card.Body>
-        <Accordion defaultActiveKey={variants[0].id} alwaysOpen>
-          {variants?.map((variant: Variant) => {
+        <Accordion defaultActiveKey={'0'}>
+          {variants?.map((variant: Variant, index: number) => {
             return (
               <Accordion.Item
                 key={variant.id}
                 className='mb-2'
-                eventKey={variant.id}
+                eventKey={String(index)}
               >
                 <Accordion.Header>
                   <div className='fw-bold me-2'>{variant.name}</div>
